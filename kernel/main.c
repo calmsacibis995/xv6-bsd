@@ -14,7 +14,7 @@ main()
   if(cpuid() == 0){
     consoleinit();
     printfinit();
-    printf("Xv6/BSD Build %d\n", buildno);
+    printf("\nXv6/BSD Build %d\n", buildno);
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
     kvminithart();   // turn on paging
