@@ -33,8 +33,7 @@ struct {
   struct buf head;
 } bcache;
 
-#define	BUFHSZ	512
-struct bufhd bufhash[BUFHSZ];	/* heads of hash lists */
+struct bufhd bufhash[BUFHSZ];
 
 /*
  * Initialize hash links for buffers.

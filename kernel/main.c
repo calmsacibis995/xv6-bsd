@@ -5,6 +5,8 @@
 #include "defs.h"
 #include "kernel.h"
 
+void bsd_panic(char *s, ...);
+
 volatile static int started = 0;
 
 // start() jumps here in supervisor mode on all CPUs.
