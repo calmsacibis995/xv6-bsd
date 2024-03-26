@@ -10,3 +10,13 @@ struct buf {
   uchar data[BSIZE];
 };
 
+/*
+ * Bufhd structures used at the head of the hashed buffer queues.
+ * We only need three words for these, so this abbreviated
+ * definition saves some space.
+ */
+struct bufhd {
+	long	b_flags;		/* see defines below */
+	struct	buf *b_forw, *b_back;	/* fwd/bkwd pointer in chain */
+};
+

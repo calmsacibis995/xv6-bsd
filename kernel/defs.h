@@ -10,6 +10,7 @@ struct stat;
 struct superblock;
 
 // bio.c
+void            bhinit(void);
 void            binit(void);
 struct buf*     bread(uint, uint);
 void            brelse(struct buf*);

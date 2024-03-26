@@ -3,6 +3,7 @@
 #include "memlayout.h"
 #include "riscv.h"
 #include "defs.h"
+#include "kernel.h"
 
 volatile static int started = 0;
 
@@ -13,9 +14,7 @@ main()
   if(cpuid() == 0){
     consoleinit();
     printfinit();
-    printf("\n");
-    printf("xv6 kernel is booting\n");
-    printf("\n");
+    printf("Xv6/BSD Build %d\n", buildno);
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
     kvminithart();   // turn on paging
@@ -24,6 +23,7 @@ main()
     trapinithart();  // install kernel trap vector
     plicinit();      // set up interrupt controller
     plicinithart();  // ask PLIC for device interrupts
+    bhinit();        // buffer hashing
     binit();         // buffer cache
     iinit();         // inode table
     fileinit();      // file table

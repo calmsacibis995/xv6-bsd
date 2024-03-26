@@ -33,6 +33,22 @@ struct {
   struct buf head;
 } bcache;
 
+#define	BUFHSZ	512
+struct bufhd bufhash[BUFHSZ];	/* heads of hash lists */
+
+/*
+ * Initialize hash links for buffers.
+ */
+void
+bhinit(void)
+{
+	register int i;
+	register struct bufhd *bp;
+
+	for (bp = bufhash, i = 0; i < BUFHSZ; i++, bp++)
+		bp->b_forw = bp->b_back = (struct buf *)bp;
+}
+
 void
 binit(void)
 {
